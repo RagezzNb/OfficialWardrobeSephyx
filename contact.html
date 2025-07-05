@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - SEPHYX</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <style>
+        .contact-page {
+            padding: 120px 0 60px;
+            min-height: 100vh;
+        }
+        
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .contact-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .contact-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            letter-spacing: 3px;
+            background: linear-gradient(45deg, var(--accent-gold), var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+        
+        .contact-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+        
+        .contact-info {
+            background: var(--secondary-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--neon-blue));
+        }
+        
+        .contact-info-title {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            margin-bottom: 30px;
+        }
+        
+        .contact-method {
+            margin-bottom: 30px;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .contact-method:last-child {
+            border-bottom: none;
+        }
+        
+        .contact-method-label {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        
+        .contact-method-value {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+        
+        .instagram-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--neon-pink);
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+        
+        .instagram-link:hover {
+            color: var(--accent-gold);
+            text-shadow: 0 0 10px var(--accent-gold);
+        }
+        
+        .instagram-icon {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+        
+        .contact-form {
+            background: var(--secondary-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+        }
+        
+        .form-title {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-label {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            background: var(--primary-bg);
+            border: 1px solid var(--text-secondary);
+            color: var(--text-primary);
+            padding: 15px 20px;
+            font-family: var(--font-body);
+            font-size: 16px;
+            transition: var(--transition);
+            outline: none;
+        }
+        
+        .form-input:focus,
+        .form-textarea:focus {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+        
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-submit {
+            background: linear-gradient(45deg, var(--accent-gold), var(--neon-blue));
+            border: none;
+            padding: 18px 40px;
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--primary-bg);
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            width: 100%;
+        }
+        
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+        
+        .form-note {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 15px;
+            text-align: center;
+            line-height: 1.5;
+        }
+        
+        .social-section {
+            background: var(--secondary-bg);
+            padding: 60px 40px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neon-pink), var(--accent-gold));
+        }
+        
+        .social-title {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--neon-pink);
+            margin-bottom: 20px;
+        }
+        
+        .social-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: transparent;
+            border: 2px solid var(--neon-pink);
+            color: var(--neon-pink);
+            padding: 20px 40px;
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-decoration: none;
+            transition: var(--transition);
+            text-transform: uppercase;
+        }
+        
+        .social-link:hover {
+            background: var(--neon-pink);
+            color: var(--primary-bg);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 0, 128, 0.3);
+        }
+        
+        .bot-section {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(0, 255, 255, 0.05));
+            padding: 60px 40px;
+            text-align: center;
+            border: 1px solid var(--border-glow);
+            margin-top: 40px;
+        }
+        
+        .bot-title {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+        }
+        
+        .bot-description {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        
+        .bot-action {
+            background: transparent;
+            border: 2px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 15px 30px;
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+        }
+        
+        .bot-action:hover {
+            background: var(--accent-gold);
+            color: var(--primary-bg);
+        }
+        
+        @media (max-width: 768px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .contact-info,
+            .contact-form {
+                padding: 30px;
+            }
+            
+            .social-section,
+            .bot-section {
+                padding: 40px 20px;
+            }
+            
+            .social-link {
+                padding: 15px 30px;
+                font-size: 16px;
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div id="cursor">
+        <div id="cursor-ring"></div>
+        <div id="cursor-trail"></div>
+    </div>
+
+    <!-- Particle Background -->
+    <div id="particles-container"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <svg viewBox="0 0 100 100" class="logo-chrome">
+                        <use href="assets/logo.svg#logo"></use>
+                    </svg>
+                    <span class="logo-text">SEPHYX</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html#collection" class="nav-link">COLLECTION</a>
+                <a href="about.html" class="nav-link">MANIFESTO</a>
+                <a href="contact.html" class="nav-link">CONTACT</a>
+                <a href="wishlist.html" class="nav-link">
+                    <span>WISHLIST</span>
+                    <span class="wishlist-count">0</span>
+                </a>
+                <a href="cart.html" class="nav-link cart-link">
+                    <span>CART</span>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Page -->
+    <section class="contact-page">
+        <div class="contact-container">
+            <div class="contact-header">
+                <h1 class="contact-title glitch" data-text="NEURAL LINK">NEURAL LINK</h1>
+                <p class="contact-subtitle">
+                    Establish connection with the SEPHYX collective. For inquiries, collaborations, or to join our network of digital rebels.
+                </p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2 class="contact-info-title">TRANSMISSION CHANNELS</h2>
+                    
+                    <div class="contact-method">
+                        <div class="contact-method-label">Primary Channel</div>
+                        <div class="contact-method-value">
+                            <a href="https://instagram.com/SephyxOfficial" target="_blank" class="instagram-link">
+                                <svg class="instagram-icon" viewBox="0 0 24 24">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                </svg>
+                                @SephyxOfficial
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-method-label">Response Time</div>
+                        <div class="contact-method-value">24-48 hours</div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-method-label">Operating Hours</div>
+                        <div class="contact-method-value">Always Online</div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-method-label">Collaboration Inquiries</div>
+                        <div class="contact-method-value">DM via Instagram</div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h2 class="form-title">SEND TRANSMISSION</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Neural ID</label>
+                            <input type="text" id="name" name="name" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Data Link</label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Transmission Type</label>
+                            <input type="text" id="subject" name="subject" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message Protocol</label>
+                            <textarea id="message" name="message" class="form-textarea" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="form-submit">TRANSMIT DATA</button>
+                        
+                        <p class="form-note">
+                            Note: This is a static demo. For real inquiries, please contact us via Instagram @SephyxOfficial
+                        </p>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="social-section">
+                <h2 class="social-title">JOIN THE COLLECTIVE</h2>
+                <p class="social-description">
+                    Follow our journey into the future of fashion. Get exclusive access to drops, behind-the-scenes content, and connect with fellow digital rebels.
+                </p>
+                <a href="https://instagram.com/SephyxOfficial" target="_blank" class="social-link">
+                    <svg class="instagram-icon" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                    Follow @SephyxOfficial
+                </a>
+            </div>
+            
+            <div class="bot-section">
+                <h2 class="bot-title">SEPHYX ORACLE</h2>
+                <p class="bot-description">
+                    Need immediate assistance? Our AI guide can help you navigate the collection and answer basic questions.
+                </p>
+                <button class="bot-action" onclick="activateChatBot()">ACTIVATE ORACLE</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="js/cursor.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Contact Form Handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+            
+            // Save to localStorage (demo purposes)
+            const contacts = JSON.parse(localStorage.getItem('sephyx_contacts')) || [];
+            contacts.push({
+                ...data,
+                timestamp: new Date().toISOString(),
+                id: 'CNT' + Date.now().toString().slice(-6)
+            });
+            localStorage.setItem('sephyx_contacts', JSON.stringify(contacts));
+            
+            // Show success message
+            if (window.SEPHYX) {
+                window.SEPHYX.showNotification('TRANSMISSION RECEIVED. WE WILL RESPOND VIA INSTAGRAM.', 'success');
+            }
+            
+            // Reset form
+            e.target.reset();
+            
+            // Animate form submission
+            gsap.to('.form-submit', {
+                scale: 0.95,
+                duration: 0.1,
+                yoyo: true,
+                repeat: 1,
+                ease: 'power2.inOut'
+            });
+        });
+        
+        // Activate chat bot
+        function activateChatBot() {
+            if (window.toggleChat) {
+                window.toggleChat();
+            }
+            
+            if (window.SEPHYX) {
+                window.SEPHYX.showNotification('ORACLE ACTIVATED. REACH OUT ON INSTAGRAM FOR PERSONALIZED ASSISTANCE.', 'info');
+            }
+        }
+        
+        // Page animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Header animation
+            gsap.fromTo('.contact-header', 
+                { opacity: 0, y: 50 },
+                { opacity: 1, y: 0, duration: 1, ease: 'power2.out' }
+            );
+            
+            // Content animation
+            gsap.fromTo('.contact-content > *', 
+                { opacity: 0, y: 30 },
+                { 
+                    opacity: 1, 
+                    y: 0, 
+                    duration: 0.8, 
+                    stagger: 0.2,
+                    delay: 0.3,
+                    ease: 'power2.out' 
+                }
+            );
+            
+            // Social section animation
+            gsap.fromTo('.social-section', 
+                { opacity: 0, scale: 0.9 },
+                { 
+                    opacity: 1, 
+                    scale: 1, 
+                    duration: 0.8, 
+                    delay: 0.6,
+                    ease: 'power2.out' 
+                }
+            );
+            
+            // Bot section animation
+            gsap.fromTo('.bot-section', 
+                { opacity: 0, y: 30 },
+                { 
+                    opacity: 1, 
+                    y: 0, 
+                    duration: 0.8, 
+                    delay: 0.8,
+                    ease: 'power2.out' 
+                }
+            );
+            
+            // Update counts
+            if (window.SEPHYX) {
+                window.SEPHYX.updateCartCount();
+                window.SEPHYX.updateWishlistCount();
+            }
+        });
+    </script>
+</body>
+</html>

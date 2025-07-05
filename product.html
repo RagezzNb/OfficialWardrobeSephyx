@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product - SEPHYX</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <style>
+        .product-detail {
+            padding: 120px 0 60px;
+            min-height: 100vh;
+        }
+        
+        .product-detail-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .product-image-section {
+            position: relative;
+        }
+        
+        .product-main-image {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            border: 1px solid var(--border-glow);
+            transition: var(--transition);
+        }
+        
+        .product-main-image:hover {
+            box-shadow: var(--glow-shadow);
+        }
+        
+        .product-details-section {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .product-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(45deg, var(--accent-gold), var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .product-price-large {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            text-shadow: 0 0 10px var(--accent-gold);
+        }
+        
+        .product-description {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+        
+        .product-options {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .option-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .option-label {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-primary);
+        }
+        
+        .option-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .option-btn {
+            background: transparent;
+            border: 1px solid var(--text-secondary);
+            color: var(--text-secondary);
+            padding: 8px 16px;
+            font-family: var(--font-body);
+            font-size: 14px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .option-btn.selected,
+        .option-btn:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+        
+        .product-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .add-to-cart-large {
+            background: linear-gradient(45deg, var(--accent-gold), var(--neon-blue));
+            border: none;
+            padding: 18px 40px;
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--primary-bg);
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+        }
+        
+        .add-to-cart-large:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+        
+        .wishlist-btn-large {
+            background: transparent;
+            border: 2px solid var(--neon-pink);
+            color: var(--neon-pink);
+            padding: 15px 40px;
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .wishlist-btn-large:hover,
+        .wishlist-btn-large.active {
+            background: var(--neon-pink);
+            color: var(--primary-bg);
+        }
+        
+        .product-specs {
+            background: var(--secondary-bg);
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .spec-item:last-child {
+            border-bottom: none;
+        }
+        
+        .spec-label {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .spec-value {
+            color: var(--text-secondary);
+        }
+        
+        .related-products {
+            padding: 60px 0;
+            background: var(--secondary-bg);
+        }
+        
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .product-detail-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .product-main-image {
+                height: 400px;
+            }
+            
+            .product-title {
+                font-size: 2rem;
+            }
+            
+            .product-price-large {
+                font-size: 1.5rem;
+            }
+            
+            .option-buttons {
+                justify-content: center;
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div id="cursor">
+        <div id="cursor-ring"></div>
+        <div id="cursor-trail"></div>
+    </div>
+
+    <!-- Particle Background -->
+    <div id="particles-container"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <svg viewBox="0 0 100 100" class="logo-chrome">
+                        <use href="assets/logo.svg#logo"></use>
+                    </svg>
+                    <span class="logo-text">SEPHYX</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html#collection" class="nav-link">COLLECTION</a>
+                <a href="about.html" class="nav-link">MANIFESTO</a>
+                <a href="contact.html" class="nav-link">CONTACT</a>
+                <a href="wishlist.html" class="nav-link">
+                    <span>WISHLIST</span>
+                    <span class="wishlist-count">0</span>
+                </a>
+                <a href="cart.html" class="nav-link cart-link">
+                    <span>CART</span>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Product Detail -->
+    <section class="product-detail">
+        <div class="product-detail-container" id="productDetailContainer">
+            <!-- Product content will be loaded here -->
+        </div>
+    </section>
+
+    <!-- Related Products -->
+    <section class="related-products">
+        <div class="container">
+            <h2 class="section-title">RELATED CYBERWEAR</h2>
+            <div class="related-grid" id="relatedGrid">
+                <!-- Related products will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="js/cursor.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/products.js"></script>
+    <script>
+        // Product Detail Page Logic
+        class ProductDetailPage {
+            constructor() {
+                this.currentProduct = null;
+                this.selectedSize = null;
+                this.selectedColor = null;
+                this.init();
+            }
+            
+            init() {
+                this.loadProductFromURL();
+                this.bindEvents();
+            }
+            
+            loadProductFromURL() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const productId = urlParams.get('id');
+                
+                if (!productId) {
+                    window.location.href = 'index.html#collection';
+                    return;
+                }
+                
+                // Wait for products to be loaded
+                const loadProduct = () => {
+                    if (window.productManager) {
+                        this.currentProduct = window.productManager.getProductById(productId);
+                        if (this.currentProduct) {
+                            this.renderProduct();
+                            this.loadRelatedProducts();
+                        } else {
+                            this.showNotFound();
+                        }
+                    } else {
+                        setTimeout(loadProduct, 100);
+                    }
+                };
+                
+                loadProduct();
+            }
+            
+            renderProduct() {
+                const container = document.getElementById('productDetailContainer');
+                if (!container || !this.currentProduct) return;
+                
+                container.innerHTML = `
+                    <div class="product-image-section">
+                        <img src="${this.currentProduct.image}" alt="${this.currentProduct.name}" class="product-main-image">
+                    </div>
+                    <div class="product-details-section">
+                        <h1 class="product-title">${this.currentProduct.name}</h1>
+                        <div class="product-price-large">$${this.currentProduct.price.toFixed(2)}</div>
+                        <p class="product-description">${this.currentProduct.description}</p>
+                        
+                        <div class="product-options">
+                            ${this.renderSizeOptions()}
+                            ${this.renderColorOptions()}
+                        </div>
+                        
+                        <div class="product-actions">
+                            <button class="add-to-cart-large" onclick="productDetail.addToCart()">
+                                ADD TO CART
+                            </button>
+                            <button class="wishlist-btn-large" onclick="productDetail.toggleWishlist()">
+                                <span class="wishlist-heart-text">♡</span>
+                                <span class="wishlist-text">ADD TO WISHLIST</span>
+                            </button>
+                        </div>
+                        
+                        <div class="product-specs">
+                            <h3 style="margin-bottom: 15px; font-family: var(--font-heading); letter-spacing: 1px;">SPECIFICATIONS</h3>
+                            <div class="spec-item">
+                                <span class="spec-label">CATEGORY</span>
+                                <span class="spec-value">${this.currentProduct.category.toUpperCase()}</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">MATERIALS</span>
+                                <span class="spec-value">${this.currentProduct.materials}</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">PRODUCT ID</span>
+                                <span class="spec-value">${this.currentProduct.id.toUpperCase()}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                // Set default selections
+                this.selectedSize = this.currentProduct.sizes[0];
+                this.selectedColor = this.currentProduct.colors[0];
+                
+                // Update UI
+                this.updateSelectedOptions();
+                this.updateWishlistButton();
+                
+                // Animate in
+                gsap.fromTo('.product-detail-container', 
+                    { opacity: 0, y: 50 },
+                    { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }
+                );
+            }
+            
+            renderSizeOptions() {
+                return `
+                    <div class="option-group">
+                        <label class="option-label">SIZE</label>
+                        <div class="option-buttons">
+                            ${this.currentProduct.sizes.map(size => 
+                                `<button class="option-btn size-btn" data-size="${size}">${size}</button>`
+                            ).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            renderColorOptions() {
+                return `
+                    <div class="option-group">
+                        <label class="option-label">COLOR</label>
+                        <div class="option-buttons">
+                            ${this.currentProduct.colors.map(color => 
+                                `<button class="option-btn color-btn" data-color="${color}">${color}</button>`
+                            ).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            bindEvents() {
+                document.addEventListener('click', (e) => {
+                    if (e.target.matches('.size-btn')) {
+                        this.selectedSize = e.target.dataset.size;
+                        this.updateSelectedOptions();
+                    }
+                    
+                    if (e.target.matches('.color-btn')) {
+                        this.selectedColor = e.target.dataset.color;
+                        this.updateSelectedOptions();
+                    }
+                });
+            }
+            
+            updateSelectedOptions() {
+                // Update size buttons
+                document.querySelectorAll('.size-btn').forEach(btn => {
+                    btn.classList.toggle('selected', btn.dataset.size === this.selectedSize);
+                });
+                
+                // Update color buttons
+                document.querySelectorAll('.color-btn').forEach(btn => {
+                    btn.classList.toggle('selected', btn.dataset.color === this.selectedColor);
+                });
+            }
+            
+            updateWishlistButton() {
+                const wishlistBtn = document.querySelector('.wishlist-btn-large');
+                const heartText = document.querySelector('.wishlist-heart-text');
+                const wishlistText = document.querySelector('.wishlist-text');
+                
+                if (!wishlistBtn || !window.wishlist) return;
+                
+                const isInWishlist = window.wishlist.wishlist.some(item => item.id === this.currentProduct.id);
+                
+                if (isInWishlist) {
+                    wishlistBtn.classList.add('active');
+                    heartText.textContent = '♥';
+                    wishlistText.textContent = 'IN WISHLIST';
+                } else {
+                    wishlistBtn.classList.remove('active');
+                    heartText.textContent = '♡';
+                    wishlistText.textContent = 'ADD TO WISHLIST';
+                }
+            }
+            
+            addToCart() {
+                if (!this.currentProduct || !window.cart) return;
+                
+                const tempCard = this.createTempProductCard();
+                document.body.appendChild(tempCard);
+                
+                window.cart.addToCart(tempCard);
+                
+                document.body.removeChild(tempCard);
+            }
+            
+            toggleWishlist() {
+                if (!this.currentProduct || !window.wishlist) return;
+                
+                const tempCard = this.createTempProductCard();
+                document.body.appendChild(tempCard);
+                
+                const heartBtn = document.createElement('button');
+                heartBtn.className = 'wishlist-heart';
+                tempCard.appendChild(heartBtn);
+                
+                window.wishlist.toggleWishlist(tempCard, heartBtn);
+                
+                document.body.removeChild(tempCard);
+                
+                // Update button state
+                setTimeout(() => this.updateWishlistButton(), 100);
+            }
+            
+            createTempProductCard() {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.dataset.productId = this.currentProduct.id;
+                card.dataset.category = this.currentProduct.category;
+                
+                card.innerHTML = `
+                    <div class="product-image">
+                        <img src="${this.currentProduct.image}" alt="${this.currentProduct.name}">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">${this.currentProduct.name}</h3>
+                        <p class="product-price">$${this.currentProduct.price.toFixed(2)}</p>
+                        <p class="product-category">${this.currentProduct.category}</p>
+                    </div>
+                `;
+                
+                return card;
+            }
+            
+            loadRelatedProducts() {
+                if (!window.productManager) return;
+                
+                const relatedProducts = window.productManager.getRelatedProducts(this.currentProduct.id);
+                const relatedGrid = document.getElementById('relatedGrid');
+                
+                if (relatedGrid && relatedProducts.length > 0) {
+                    relatedGrid.innerHTML = relatedProducts.map(product => 
+                        window.productManager.createProductCard(product)
+                    ).join('');
+                    
+                    // Initialize wishlist hearts for related products
+                    if (window.wishlist) {
+                        window.wishlist.markWishlistItems();
+                    }
+                } else if (relatedGrid) {
+                    document.querySelector('.related-products').style.display = 'none';
+                }
+            }
+            
+            showNotFound() {
+                const container = document.getElementById('productDetailContainer');
+                if (container) {
+                    container.innerHTML = `
+                        <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px;">
+                            <h2 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 20px; color: var(--neon-pink);">
+                                PRODUCT NOT FOUND
+                            </h2>
+                            <p style="margin-bottom: 30px; color: var(--text-secondary);">
+                                The requested cyberwear item does not exist in our database.
+                            </p>
+                            <a href="index.html#collection" class="cta-button">RETURN TO COLLECTION</a>
+                        </div>
+                    `;
+                }
+            }
+        }
+        
+        // Initialize product detail page
+        const productDetail = new ProductDetailPage();
+        
+        // Initialize other components
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.SEPHYX) {
+                window.SEPHYX.updateCartCount();
+                window.SEPHYX.updateWishlistCount();
+            }
+        });
+    </script>
+</body>
+</html>

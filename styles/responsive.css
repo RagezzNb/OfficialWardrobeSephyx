@@ -1,0 +1,395 @@
+/* Responsive Design */
+
+/* Tablet Styles */
+@media (max-width: 1024px) {
+    .nav-container {
+        padding: 0 15px;
+    }
+    
+    .hero-title {
+        font-size: clamp(2.5rem, 7vw, 6rem);
+    }
+    
+    .products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+    }
+    
+    .manifesto-text {
+        font-size: clamp(1.2rem, 3vw, 2.5rem);
+        min-height: 100px;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    /* Navigation Mobile */
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--primary-bg);
+        flex-direction: column;
+        gap: 20px;
+        padding: 30px 20px;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+        border-top: 1px solid var(--border-glow);
+    }
+    
+    .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .nav-toggle {
+        display: flex;
+    }
+    
+    .nav-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+    
+    .nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .nav-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
+    
+    /* Hero Mobile */
+    .hero {
+        height: 100vh;
+        padding: 80px 20px 0;
+    }
+    
+    .hero-title {
+        font-size: clamp(2rem, 6vw, 4rem);
+        letter-spacing: 2px;
+    }
+    
+    .hero-subtitle {
+        font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+        letter-spacing: 1px;
+    }
+    
+    .cta-button {
+        padding: 12px 30px;
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+    
+    /* Sections Mobile */
+    .collection,
+    .manifesto-section {
+        padding: 60px 0;
+    }
+    
+    .newsletter {
+        padding: 60px 0;
+    }
+    
+    .section-title {
+        font-size: clamp(1.5rem, 4vw, 3rem);
+        margin-bottom: 40px;
+        letter-spacing: 2px;
+    }
+    
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .product-card {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    .product-image {
+        height: 350px;
+    }
+    
+    /* Filter Bar Mobile */
+    .filter-bar {
+        gap: 10px;
+        margin-bottom: 40px;
+    }
+    
+    .filter-btn {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+    
+    /* Manifesto Mobile */
+    .manifesto-text {
+        font-size: clamp(1rem, 2.5vw, 2rem);
+        min-height: 80px;
+        line-height: 1.3;
+    }
+    
+    .manifesto-btn {
+        padding: 10px 25px;
+        font-size: 12px;
+    }
+    
+    /* Newsletter Mobile */
+    .newsletter-form {
+        flex-direction: column;
+        max-width: 300px;
+        gap: 15px;
+    }
+    
+    .newsletter-form input,
+    .newsletter-form button {
+        width: 100%;
+        text-align: center;
+    }
+    
+    /* Chat Bot Mobile */
+    .chat-bot {
+        bottom: 15px;
+        right: 15px;
+    }
+    
+    .chat-toggle {
+        padding: 12px 16px;
+        font-size: 12px;
+        border-radius: 20px;
+    }
+    
+    .chat-window {
+        width: 280px;
+        right: 0;
+    }
+    
+    /* Cursor Mobile - Disable custom cursor on touch devices */
+    @media (hover: none) and (pointer: coarse) {
+        html, body {
+            cursor: auto !important;
+        }
+        
+        #cursor {
+            display: none;
+        }
+        
+        .cursor-hover,
+        .cursor-click {
+            /* Reset cursor effects on mobile */
+        }
+    }
+    
+    /* Custom Scrollbar Mobile */
+    ::-webkit-scrollbar {
+        width: 4px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: var(--primary-bg);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: var(--accent-gold);
+        border-radius: 2px;
+    }
+}
+
+/* Small Mobile Styles */
+@media (max-width: 480px) {
+    .nav-container {
+        padding: 0 10px;
+        height: 60px;
+    }
+    
+    .logo-text {
+        font-size: 20px;
+    }
+    
+    .logo-chrome {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .hero {
+        padding: 70px 15px 0;
+    }
+    
+    .hero-title {
+        font-size: clamp(1.8rem, 5vw, 3rem);
+    }
+    
+    .manifesto-text {
+        font-size: clamp(0.9rem, 2vw, 1.5rem);
+        min-height: 60px;
+    }
+    
+    .section-title {
+        font-size: clamp(1.2rem, 3vw, 2rem);
+    }
+    
+    .container {
+        padding: 0 10px;
+    }
+    
+    .product-info {
+        padding: 15px;
+    }
+    
+    .product-name {
+        font-size: 16px;
+    }
+    
+    .product-price {
+        font-size: 14px;
+    }
+    
+    .chat-window {
+        width: 260px;
+    }
+    
+    .newsletter-form {
+        max-width: 280px;
+    }
+}
+
+/* Landscape Mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero {
+        height: 100vh;
+        padding: 60px 20px 0;
+    }
+    
+    .hero-title {
+        font-size: clamp(1.5rem, 4vw, 3rem);
+    }
+    
+    .hero-subtitle {
+        font-size: clamp(0.8rem, 1.2vw, 1rem);
+        margin-bottom: 25px;
+    }
+    
+    .cta-button {
+        padding: 10px 25px;
+        font-size: 12px;
+    }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .logo-chrome,
+    .spinning-logo {
+        filter: drop-shadow(0 0 5px var(--accent-gold));
+    }
+    
+    .glitch::before,
+    .glitch::after {
+        transform: translateZ(0);
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .spinning-logo {
+        animation: none;
+    }
+    
+    .nebula-layer,
+    .comet-trails {
+        animation: none;
+    }
+    
+    .glitch::before,
+    .glitch::after {
+        animation: none;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .navbar,
+    .chat-bot,
+    #cursor,
+    #particles-container,
+    .hero-bg {
+        display: none !important;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .hero-title,
+    .section-title,
+    .manifesto-text {
+        color: black !important;
+        background: none !important;
+        -webkit-text-fill-color: black !important;
+    }
+    
+    .product-card {
+        border: 1px solid #ccc !important;
+        background: white !important;
+        break-inside: avoid;
+    }
+}
+
+/* Dark Mode Support (System Preference) */
+@media (prefers-color-scheme: light) {
+    /* Override for users who prefer light mode but still want the cyberpunk aesthetic */
+    :root {
+        --primary-bg: #0a0a0a;
+        --secondary-bg: #1a1a1a;
+        /* Keep dark theme for cyberpunk aesthetic */
+    }
+}
+
+/* Accessibility Improvements */
+@media (prefers-contrast: high) {
+    :root {
+        --accent-gold: #ffff00;
+        --neon-blue: #00ffff;
+        --neon-pink: #ff00ff;
+        --border-glow: rgba(255, 255, 0, 0.5);
+    }
+    
+    .nav-link::after {
+        height: 3px;
+    }
+    
+    .filter-btn.active,
+    .filter-btn:hover {
+        border-width: 2px;
+    }
+}
+
+/* Focus Styles for Keyboard Navigation */
+@media (hover: hover) and (pointer: fine) {
+    .nav-link:focus,
+    .filter-btn:focus,
+    .cta-button:focus,
+    .add-to-cart:focus,
+    .manifesto-btn:focus,
+    .newsletter-form input:focus,
+    .newsletter-form button:focus {
+        outline: 2px solid var(--accent-gold);
+        outline-offset: 2px;
+    }
+}

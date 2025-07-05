@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" id="punk-hero-bg">
+  <defs>
+    <linearGradient id="punkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a0033;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#330066;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#000000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a0033;stop-opacity:1" />
+    </linearGradient>
+    
+    <radialGradient id="spotlightGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:0.3" />
+      <stop offset="50%" style="stop-color:#FF0080;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:0.8" />
+    </radialGradient>
+    
+    <filter id="grunge" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence baseFrequency="0.04" numOctaves="3" result="noise"/>
+      <feColorMatrix in="noise" type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="discrete" tableValues="0 .5 .5 .7 .7 .9 1"/>
+      </feComponentTransfer>
+      <feComposite operator="multiply" in2="SourceGraphic"/>
+    </filter>
+    
+    <pattern id="punkTexture" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+      <rect width="100" height="100" fill="#000000" opacity="0.1"/>
+      <circle cx="20" cy="20" r="1" fill="#FFD700" opacity="0.3"/>
+      <circle cx="80" cy="40" r="1.5" fill="#FF0080" opacity="0.4"/>
+      <circle cx="50" cy="70" r="1" fill="#00FFFF" opacity="0.3"/>
+      <rect x="10" y="10" width="2" height="20" fill="#FFD700" opacity="0.2" transform="rotate(45 11 20)"/>
+      <rect x="70" y="60" width="1" height="15" fill="#FF0080" opacity="0.3" transform="rotate(-30 70.5 67.5)"/>
+    </pattern>
+  </defs>
+  
+  <!-- Base background -->
+  <rect width="1920" height="1080" fill="url(#punkGradient)"/>
+  
+  <!-- Punk texture overlay -->
+  <rect width="1920" height="1080" fill="url(#punkTexture)" opacity="0.6"/>
+  
+  <!-- Spotlight effect -->
+  <ellipse cx="960" cy="400" rx="800" ry="400" fill="url(#spotlightGradient)"/>
+  
+  <!-- Urban silhouettes -->
+  <g opacity="0.3" filter="url(#grunge)">
+    <!-- Building silhouettes -->
+    <rect x="0" y="600" width="200" height="480" fill="#000000" opacity="0.7"/>
+    <rect x="200" y="550" width="150" height="530" fill="#0a0a0a" opacity="0.8"/>
+    <rect x="350" y="650" width="180" height="430" fill="#000000" opacity="0.6"/>
+    <rect x="530" y="500" width="120" height="580" fill="#0a0a0a" opacity="0.9"/>
+    <rect x="650" y="580" width="160" height="500" fill="#000000" opacity="0.7"/>
+    
+    <!-- Right side buildings -->
+    <rect x="1400" y="520" width="140" height="560" fill="#000000" opacity="0.8"/>
+    <rect x="1540" y="600" width="120" height="480" fill="#0a0a0a" opacity="0.7"/>
+    <rect x="1660" y="580" width="100" height="500" fill="#000000" opacity="0.6"/>
+    <rect x="1760" y="650" width="160" height="430" fill="#0a0a0a" opacity="0.8"/>
+    
+    <!-- Random windows in buildings -->
+    <rect x="50" y="650" width="8" height="8" fill="#FFD700" opacity="0.8"/>
+    <rect x="80" y="680" width="8" height="8" fill="#FFD700" opacity="0.6"/>
+    <rect x="250" y="600" width="6" height="10" fill="#FF0080" opacity="0.7"/>
+    <rect x="280" y="640" width="6" height="10" fill="#00FFFF" opacity="0.5"/>
+    <rect x="1450" y="570" width="8" height="12" fill="#FFD700" opacity="0.9"/>
+    <rect x="1480" y="620" width="8" height="8" fill="#FF0080" opacity="0.6"/>
+  </g>
+  
+  <!-- Graffiti-style elements -->
+  <g opacity="0.4">
+    <!-- Spray paint splatters -->
+    <circle cx="300" cy="300" r="15" fill="#FF0080" opacity="0.6">
+      <animate attributeName="opacity" values="0.4;0.8;0.4" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1600" cy="250" r="12" fill="#00FFFF" opacity="0.5">
+      <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="800" cy="200" r="10" fill="#FFD700" opacity="0.7">
+      <animate attributeName="opacity" values="0.5;0.9;0.5" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Abstract punk shapes -->
+    <polygon points="150,400 180,420 170,450 140,440" fill="#FF0080" opacity="0.3"/>
+    <polygon points="1700,300 1730,310 1720,340 1690,330" fill="#00FFFF" opacity="0.4"/>
+    <polygon points="500,150 530,170 520,200 490,180" fill="#FFD700" opacity="0.3"/>
+  </g>
+  
+  <!-- Atmospheric fog/smoke -->
+  <g opacity="0.2">
+    <ellipse cx="400" cy="800" rx="300" ry="100" fill="#FFFFFF" opacity="0.1">
+      <animateTransform attributeName="transform" type="translate" values="0,0;50,0;0,0" dur="8s" repeatCount="indefinite"/>
+    </ellipse>
+    <ellipse cx="1200" cy="750" rx="250" ry="80" fill="#FFFFFF" opacity="0.08">
+      <animateTransform attributeName="transform" type="translate" values="0,0;-30,0;0,0" dur="6s" repeatCount="indefinite"/>
+    </ellipse>
+  </g>
+  
+  <!-- Electric grid overlay -->
+  <g opacity="0.1" stroke="#00FFFF" stroke-width="1" fill="none">
+    <defs>
+      <pattern id="electricGrid" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+        <path d="M 50 0 L 0 0 0 50" stroke="#FFD700" stroke-width="0.5" opacity="0.3"/>
+      </pattern>
+    </defs>
+    <rect width="1920" height="1080" fill="url(#electricGrid)"/>
+  </g>
+</svg>

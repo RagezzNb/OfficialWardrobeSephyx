@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manifesto - SEPHYX</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <style>
+        .manifesto-page {
+            padding: 120px 0 60px;
+        }
+        
+        .manifesto-hero {
+            text-align: center;
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(0, 255, 255, 0.05));
+            border-bottom: 1px solid var(--border-glow);
+        }
+        
+        .manifesto-hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            letter-spacing: 4px;
+            background: linear-gradient(45deg, var(--accent-gold), var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+        }
+        
+        .manifesto-hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+        
+        .manifesto-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+        
+        .manifesto-section {
+            margin-bottom: 80px;
+        }
+        
+        .manifesto-section-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .manifesto-section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--neon-blue));
+        }
+        
+        .manifesto-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-primary);
+            margin-bottom: 30px;
+            text-align: justify;
+        }
+        
+        .manifesto-text.large {
+            font-size: 1.5rem;
+            font-weight: 300;
+            text-align: center;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+        
+        .manifesto-quote {
+            background: var(--secondary-bg);
+            border-left: 4px solid var(--accent-gold);
+            padding: 30px;
+            margin: 40px 0;
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--accent-gold);
+            position: relative;
+        }
+        
+        .manifesto-quote::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--neon-blue);
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            opacity: 0.3;
+        }
+        
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .principle-card {
+            background: var(--secondary-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .principle-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+        }
+        
+        .principle-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--neon-blue));
+        }
+        
+        .principle-number {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--neon-blue);
+            opacity: 0.3;
+            margin-bottom: 20px;
+        }
+        
+        .principle-title {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        
+        .principle-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        .founder-section {
+            background: var(--secondary-bg);
+            padding: 80px 0;
+            margin: 80px 0;
+        }
+        
+        .founder-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+        
+        .founder-title {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--neon-pink);
+            margin-bottom: 30px;
+        }
+        
+        .founder-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+        
+        .founder-signature {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: var(--accent-gold);
+            letter-spacing: 2px;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 60px 0;
+        }
+        
+        .cta-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, var(--accent-gold), var(--neon-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .cta-text {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        @media (max-width: 768px) {
+            .manifesto-content {
+                padding: 60px 15px;
+            }
+            
+            .manifesto-text {
+                font-size: 1.1rem;
+                text-align: left;
+            }
+            
+            .manifesto-text.large {
+                font-size: 1.3rem;
+            }
+            
+            .manifesto-quote {
+                padding: 20px;
+                font-size: 1.1rem;
+            }
+            
+            .principles-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .principle-card {
+                padding: 25px;
+            }
+            
+            .founder-section {
+                padding: 60px 0;
+                margin: 60px 0;
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div id="cursor">
+        <div id="cursor-ring"></div>
+        <div id="cursor-trail"></div>
+    </div>
+
+    <!-- Particle Background -->
+    <div id="particles-container"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <svg viewBox="0 0 100 100" class="logo-chrome">
+                        <use href="assets/logo.svg#logo"></use>
+                    </svg>
+                    <span class="logo-text">SEPHYX</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html#collection" class="nav-link">COLLECTION</a>
+                <a href="about.html" class="nav-link">MANIFESTO</a>
+                <a href="contact.html" class="nav-link">CONTACT</a>
+                <a href="wishlist.html" class="nav-link">
+                    <span>WISHLIST</span>
+                    <span class="wishlist-count">0</span>
+                </a>
+                <a href="cart.html" class="nav-link cart-link">
+                    <span>CART</span>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Manifesto Hero -->
+    <section class="manifesto-hero">
+        <div class="container">
+            <h1 class="manifesto-hero-title glitch" data-text="THE MANIFESTO">THE MANIFESTO</h1>
+            <p class="manifesto-hero-subtitle">REBELLION ENCODED IN EVERY THREAD</p>
+        </div>
+    </section>
+
+    <!-- Manifesto Content -->
+    <section class="manifesto-content">
+        <div class="manifesto-section">
+            <p class="manifesto-text large">
+                In a world where conformity is the virus and individuality is the cure, SEPHYX emerges as the antidote to mass-produced mediocrity.
+            </p>
+        </div>
+
+        <div class="manifesto-section">
+            <h2 class="manifesto-section-title">OUR GENESIS</h2>
+            <p class="manifesto-text">
+                Born from the digital underground and forged in the fires of rebellion, SEPHYX represents more than fashion—it is a movement. We exist at the intersection of high technology and human expression, where cyberpunk philosophy meets wearable art.
+            </p>
+            <p class="manifesto-text">
+                In the sprawling neon-lit megacities of tomorrow, style becomes survival. Your aesthetic choices are your armor against the homogenizing forces of corporate culture. SEPHYX provides the weapons you need to wage this sartorial war.
+            </p>
+            
+            <div class="manifesto-quote">
+                Fashion dies. Drip is eternal. Your outfit is your operating system.
+            </div>
+        </div>
+
+        <div class="manifesto-section">
+            <h2 class="manifesto-section-title">THE SEPHYX PRINCIPLES</h2>
+            <div class="principles-grid">
+                <div class="principle-card">
+                    <div class="principle-number">01</div>
+                    <h3 class="principle-title">AUTHENTIC REBELLION</h3>
+                    <p class="principle-description">
+                        We reject the mainstream's definition of beauty. Our designs challenge conventions and celebrate the beautiful breakdown of traditional fashion systems.
+                    </p>
+                </div>
+                
+                <div class="principle-card">
+                    <div class="principle-number">02</div>
+                    <h3 class="principle-title">TECHNOLOGICAL INTEGRATION</h3>
+                    <p class="principle-description">
+                        Every piece incorporates cutting-edge materials and concepts from cyberpunk culture. We're not just making clothes—we're engineering the future of human expression.
+                    </p>
+                </div>
+                
+                <div class="principle-card">
+                    <div class="principle-number">03</div>
+                    <h3 class="principle-title">EXCLUSIVE ACCESS</h3>
+                    <p class="principle-description">
+                        SEPHYX is not for everyone. We create for the select few who understand that style is a statement of consciousness, not consumption.
+                    </p>
+                </div>
+                
+                <div class="principle-card">
+                    <div class="principle-number">04</div>
+                    <h3 class="principle-title">DIGITAL NATIVES</h3>
+                    <p class="principle-description">
+                        We design for those who live between virtual and physical worlds, who understand that identity is fluid and expression is code.
+                    </p>
+                </div>
+                
+                <div class="principle-card">
+                    <div class="principle-number">05</div>
+                    <h3 class="principle-title">SUSTAINABLE RESISTANCE</h3>
+                    <p class="principle-description">
+                        Our rebellion includes rejecting the fast-fashion industrial complex. Every piece is designed to last, to become part of your personal mythology.
+                    </p>
+                </div>
+                
+                <div class="principle-card">
+                    <div class="principle-number">06</div>
+                    <h3 class="principle-title">COMMUNITY CONSCIOUSNESS</h3>
+                    <p class="principle-description">
+                        SEPHYX wearers form a distributed network of style hackers, each contributing to the collective aesthetic consciousness of tomorrow.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="manifesto-section">
+            <h2 class="manifesto-section-title">THE CYBERPUNK ETHOS</h2>
+            <p class="manifesto-text">
+                We draw inspiration from the cyberpunk movement's core philosophy: high tech, low life. In a world dominated by corporate megastructures, individual expression becomes an act of resistance. Every SEPHYX piece is designed to be a glitch in the system, a beautiful error that refuses to be corrected.
+            </p>
+            <p class="manifesto-text">
+                Our aesthetic celebrates the breakdown of boundaries—between human and machine, virtual and real, conformity and rebellion. We embrace the glitch, the malfunction, the beautiful imperfection that makes you distinctly, undeniably human.
+            </p>
+        </div>
+
+        <div class="manifesto-section">
+            <h2 class="manifesto-section-title">STYLE AS SURVIVAL</h2>
+            <p class="manifesto-text">
+                In the digital age, your appearance is your interface with the world. SEPHYX understands that fashion is not frivolous—it is fundamental. Your style choices communicate your values, your allegiances, your resistance to the forces that seek to homogenize human expression.
+            </p>
+            
+            <div class="manifesto-quote">
+                You are not buying clothes. You are becoming iconography. Style is rebellion encrypted in fabric.
+            </div>
+            
+            <p class="manifesto-text">
+                Every garment we create is designed to enhance your personal narrative, to amplify your signal in a world full of noise. When you wear SEPHYX, you're not just getting dressed—you're assembling your armor for the cultural battles ahead.
+            </p>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section class="founder-section">
+        <div class="founder-content">
+            <h2 class="founder-title">MESSAGE FROM THE COLLECTIVE</h2>
+            <p class="founder-text">
+                SEPHYX was not created by a single designer or corporation. We are a collective of digital artists, fashion hackers, and cultural insurgents who believe that the future of style lies in the hands of those brave enough to reject the mainstream.
+            </p>
+            <p class="founder-text">
+                We operate in the shadows of the fashion industry, creating pieces that celebrate individuality over conformity, quality over quantity, rebellion over compliance. Join us in redefining what it means to be stylish in the age of artificial intelligence and augmented reality.
+            </p>
+            <div class="founder-signature">— THE SEPHYX COLLECTIVE</div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">JOIN THE RESISTANCE</h2>
+            <p class="cta-text">
+                Ready to reject the mundane and embrace the extraordinary? Explore our collection and find the pieces that will become part of your personal revolution.
+            </p>
+            <a href="index.html#collection" class="cta-button">EXPLORE COLLECTION</a>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="js/cursor.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Manifesto Page Animations
+        document.addEventListener('DOMContentLoaded', function() {
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // Hero animation
+            gsap.fromTo('.manifesto-hero-title', 
+                { opacity: 0, y: 50 },
+                { opacity: 1, y: 0, duration: 1, ease: 'power2.out' }
+            );
+            
+            gsap.fromTo('.manifesto-hero-subtitle', 
+                { opacity: 0, y: 30 },
+                { opacity: 1, y: 0, duration: 1, delay: 0.3, ease: 'power2.out' }
+            );
+            
+            // Section animations
+            gsap.utils.toArray('.manifesto-section').forEach((section, i) => {
+                gsap.fromTo(section, {
+                    opacity: 0,
+                    y: 50
+                }, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    scrollTrigger: {
+                        trigger: section,
+                        start: 'top 80%',
+                        end: 'bottom 20%',
+                        toggleActions: 'play none none reverse'
+                    }
+                });
+            });
+            
+            // Principle cards stagger animation
+            gsap.utils.toArray('.principle-card').forEach((card, i) => {
+                gsap.fromTo(card, {
+                    opacity: 0,
+                    y: 30,
+                    scale: 0.9
+                }, {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    duration: 0.6,
+                    delay: i * 0.1,
+                    scrollTrigger: {
+                        trigger: card,
+                        start: 'top 90%',
+                        toggleActions: 'play none none reverse'
+                    }
+                });
+            });
+            
+            // Quote animations
+            gsap.utils.toArray('.manifesto-quote').forEach(quote => {
+                gsap.fromTo(quote, {
+                    opacity: 0,
+                    x: -50
+                }, {
+                    opacity: 1,
+                    x: 0,
+                    duration: 0.8,
+                    scrollTrigger: {
+                        trigger: quote,
+                        start: 'top 85%',
+                        toggleActions: 'play none none reverse'
+                    }
+                });
+            });
+            
+            // Founder section animation
+            gsap.fromTo('.founder-content', {
+                opacity: 0,
+                y: 40
+            }, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: '.founder-section',
+                    start: 'top 70%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+            
+            // Update counts
+            if (window.SEPHYX) {
+                window.SEPHYX.updateCartCount();
+                window.SEPHYX.updateWishlistCount();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEPHYX - Cyberpunk Cult Fashion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div id="cursor">
+        <div id="cursor-ring"></div>
+        <div id="cursor-trail"></div>
+    </div>
+
+    <!-- Loader -->
+    <div id="loader">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <svg viewBox="0 0 100 100" class="spinning-logo">
+                    <use href="assets/logo.svg#logo"></use>
+                </svg>
+            </div>
+            <div class="loader-text">SEPHYX SYSTEM BOOTING...</div>
+            <div class="loader-progress">
+                <div class="loader-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Particle Background -->
+    <div id="particles-container"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <svg viewBox="0 0 100 100" class="logo-chrome">
+                        <use href="assets/logo.svg#logo"></use>
+                    </svg>
+                    <span class="logo-text">SEPHYX</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="#collection" class="nav-link">COLLECTION</a>
+                <a href="about.html" class="nav-link">MANIFESTO</a>
+                <a href="contact.html" class="nav-link">CONTACT</a>
+                <a href="wishlist.html" class="nav-link">
+                    <span>WISHLIST</span>
+                    <span class="wishlist-count">0</span>
+                </a>
+                <a href="cart.html" class="nav-link cart-link">
+                    <span>CART</span>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title glitch" data-text="SEPHYX">SEPHYX</h1>
+            <p class="hero-subtitle">REBELLION ENCRYPTED IN FABRIC</p>
+            <div class="hero-cta">
+                <button class="cta-button" onclick="scrollToCollection()">ENTER THE VOID</button>
+            </div>
+        </div>
+        <div class="hero-bg">
+            <div class="nebula-layer"></div>
+            <div class="comet-trails"></div>
+        </div>
+    </section>
+
+    <!-- Manifesto Generator -->
+    <section class="manifesto-section">
+        <div class="container">
+            <h2 class="section-title">DRIP MANIFESTO</h2>
+            <div class="manifesto-generator">
+                <div class="manifesto-text" id="manifestoText">
+                    Drip is not worn. Drip is summoned.
+                </div>
+                <button class="manifesto-btn" onclick="generateManifesto()">GENERATE NEW TRUTH</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collection Section -->
+    <section id="collection" class="collection">
+        <div class="container">
+            <h2 class="section-title">COLLECTION</h2>
+            <div class="filter-bar">
+                <button class="filter-btn active" data-filter="all">ALL</button>
+                <button class="filter-btn" data-filter="jackets">JACKETS</button>
+                <button class="filter-btn" data-filter="pants">PANTS</button>
+                <button class="filter-btn" data-filter="accessories">ACCESSORIES</button>
+            </div>
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be loaded by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2 class="section-title">JOIN THE CULT</h2>
+            <p class="newsletter-desc">Subscribe to receive exclusive drops and manifesto updates</p>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" placeholder="ENTER YOUR NEURAL LINK" required>
+                <button type="submit">TRANSMIT</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Chat Bot -->
+    <div class="chat-bot" id="chatBot">
+        <div class="chat-toggle" onclick="toggleChat()">
+            <span>NEED GUIDANCE?</span>
+        </div>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <span>SEPHYX ORACLE</span>
+                <button onclick="toggleChat()">&times;</button>
+            </div>
+            <div class="chat-content">
+                <div class="chat-message bot">
+                    Welcome to SEPHYX. For personalized styling and inquiries, reach out to us on Instagram.
+                </div>
+                <div class="chat-actions">
+                    <a href="https://instagram.com/SephyxOfficial" target="_blank" class="chat-btn">
+                        CONTACT @SEPHYXOFFICIAL
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/cursor.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/manifesto.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
